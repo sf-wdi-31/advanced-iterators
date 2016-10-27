@@ -1,21 +1,52 @@
 # Interview Prep - Iterators
 
-Today you'll be implementing *even more* iterator functions on the whiteboard in groups of three. Since there are three problems, each group member should take a turn "driving" for one problem with the other two as support ("navigators").
+Today you'll be implementing iterator functions on the whiteboard in groups of three. As you work through, each group member should take a turn as the "interviewee" for one problem with the other two as supportive "interviewers."
 
-**Note:** DO NOT use any built-in iterator functions from Underscore or another library. You will often be asked in interviews to implement well-known methods like this from scratch as problem-solving exercises.
+**Note:** DO NOT use any built-in iterator functions. You will often be asked in interviews to implement well-known methods like this from scratch as problem-solving exercises.
 
 
 ## How to Get Started
 
 * Use pseudo-code to plan the logic of your function before writing actual code on the board.
 
-* Write down at least one new example of test input, and write down the expected output. **Hint:** For `filter` and `partition`, one of your test inputs will be a function.
+* Write down at least one new example of test input, and write down the expected output. **Hint:** For many iterators, one of your test inputs will be a function.
 
-* Only when you have pseudo-code and test input with expected output should you write code to implement the body of the function.
+* Only when you have pseudocode and test input with expected output should you write code to implement the body of the function.
 
 ## Problems
 
-1. `filter(arr, truthTest)`
+
+1. `each(arr, callback)`
+
+	```js
+	function exclaim(phrase){
+		console.log(phrase + "!");
+	}
+
+	each(["hi", "what?"], exclaim);
+
+	// hi!
+	// what?!
+	// => undefined
+	```
+
+  Write a function called `each` that takes in an array and a callback function. `each` should iterate through all items in the array and call the callback function with each item as a parameter. `each` should return `undefined`.
+
+2. `map(arr, callback)`
+
+	```js
+	function question(phrase){
+		return phrase + "?";
+	}
+
+	map(["who", "you"], question);
+
+	// => ["who?", "you?"]
+	```
+
+	Write a function called `map` that takes in an array and a callback function. `map` should iterate through all items in the array, call the callback function with each item and its index as parameters, and return a new array containing all the values returned by the callback.
+
+1. `filter(arr, callback)`
 
 	```js
 
@@ -28,12 +59,12 @@ Today you'll be implementing *even more* iterator functions on the whiteboard in
 	// => [2, 4, 6]
 	```
 
-	Write a function called `filter` that takes in an array and another function (a truth test). `filter` should iterate through the array, check whether each value passes the truth test function, and return a new array containing all the values that passed.
+	Write a function called `filter` that takes in an array and another function (which will return a boolean). `filter` should iterate through the array, check whether each the callback function returns true for each value, and return a new array containing all the values that did return true.
 
 
 
 
-1. `partition(arr, truthTest)`
+1. `partition(arr, callback)`
 
 
 	```js
@@ -45,7 +76,7 @@ Today you'll be implementing *even more* iterator functions on the whiteboard in
 	// => [[1, 3, 5], [0, 2, 4]]
 	```
 
-	Write a function called `partition` that takes in an array and another function (a truth test).  `partition` should split the array into two groups: one whose elements all pass the truth test and one whose elements all fail. It should return a new array with the two groups nested inside.
+	Write a function called `partition` that takes in an array and a callback function.  `partition` should split the array into two arrays: one with all the elements for which the callback returned true, and one with all the elements for which the callback returned false. It should return a new array with the two partitioned arrays nested inside.
 
 
 
@@ -53,11 +84,11 @@ Today you'll be implementing *even more* iterator functions on the whiteboard in
 
 	```js
 	grandparents = [
-		{first: "June", last: "Crane", age: 74},
-		{first: "Jim", last: "Crane", age:76},
-		{first: "Linda", "Fuentes", age: 62},
-		{first: "Panfilo", "Fuentes", age: 76}
-		];
+	  {first: "June", last: "Crane", age: 74},
+	  {first: "Jim", last: "Crane", age:76},
+	  {first: "Linda", last: "Fuentes", age: 62},
+	  {first: "Panfilo", last: "Fuentes", age: 76}
+	  ];
 
 	pluck(grandparents, 'first');
 	// =>["June", "Jim", "Linda", "Panfilo"]
@@ -65,7 +96,7 @@ Today you'll be implementing *even more* iterator functions on the whiteboard in
 
 	Write a function called `pluck` that takes in an array of objects and a key. `pluck` should iterate through the array, pick out the value each object has associated with the given key, and return a new array containing those values.
 
-	1. Optional Stretch: `where(arr, properties)`
+1. `where(arr, properties)`
 
 	```js
 
@@ -74,7 +105,7 @@ Today you'll be implementing *even more* iterator functions on the whiteboard in
 		{location: "GA", day: "Tuesday", time: "1830"},
 		{location: "Blue Bottle", day: "Tuesday", time: "1100"},
 		{location: "GA", day: "Thursday", time: "1830"},
-		{location: "GA", day "Thursday", time: "0917"}
+		{location: "GA", day: "Thursday", time: "0917"}
 		];
 
 	where(events, {time: "1830", location: "GA"});
@@ -85,6 +116,4 @@ Today you'll be implementing *even more* iterator functions on the whiteboard in
 	```
 
 
-	Write a function called `where` that takes an array of objects and another object. `where` looks through each object in the array, returning a new array containing the objects that match *every* key-value pair given in the second argument.
-
-	Hint: Remember looping through objects with "for in" loops and "hasOwnProperty"? If not, you'll need to look it up!
+	Write a function called `where` that takes an array of objects and another object. `where` looks through each object in the array and returns a new array containing the objects that match *every* key-value pair given in the second argument.
