@@ -141,9 +141,13 @@ Today you'll be implementing iterator functions on the whiteboard in pairs or th
 
 	isEqual(thing1, thing2);
 	// => true
+	
+	thing1 == thing1;
+	// => true
+
+	thing1 == thing2;
+	// => false
 	```
 
 
-	Write a function called `isEqual` that in two objects. `isEqual` compares the objects based on the keys and values inside. It returns `true` if the objects have all the same-valued keys and valued, and it returns `false` if not.
-
-	> Note: Solution not provided in this repo. Deep equality is hard in JavaScript (why?). Feel free to check out lodash's [source code for `baseIsEqual`](https://github.com/lodash/lodash/blob/4.16.4/lodash.js#L3266).
+	Write a function called `isEqual` that takes in two objects. `isEqual` compares the objects based on the _values_ of all of the keys and values inside. (Why is this different from normal `==` behavior?)  It returns `true` if the objects have all the same keys and matching values, even if they're not stored in the same memory location. It returns false if not. Note that a solution is not provided in this repo.  Feel free to check out lodash's [source code for `baseIsEqual`](https://github.com/lodash/lodash/blob/4.16.4/lodash.js#L3266).
