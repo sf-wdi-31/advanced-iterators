@@ -1,6 +1,6 @@
 # Interview Prep - Iterators
 
-Today you'll be implementing iterator functions on the whiteboard in groups of three. As you work through, each group member should take a turn as the "interviewee" for one problem with the other two as supportive "interviewers."
+Today you'll be implementing iterator functions on the whiteboard in pairs or threes. As you work through, alternate who is the "candidate" for each problem.  The candidate's job will be to convince the other person, the "interviewer," that they've solved the problem.  The "interviewer" can look at the solution and give hints if needed.
 
 **Note:** DO NOT use any built-in iterator functions. You will often be asked in interviews to implement well-known methods like this from scratch as problem-solving exercises.
 
@@ -117,3 +117,33 @@ Today you'll be implementing iterator functions on the whiteboard in groups of t
 
 
 	Write a function called `where` that takes an array of objects and another object. `where` looks through each object in the array and returns a new array containing the objects that match *every* key-value pair given in the second argument.
+
+1. `isEqual(obj1, obj2)`
+
+	```js
+  thing1 = {
+		flavor: "mango",
+		nutritionInformation: {
+			calories: 80,
+			sugar: 2,
+			servingSize: "8 oz"
+		}
+	};
+
+	thing2 = {
+		flavor: "mango",
+		nutritionInformation: {
+			calories: 80,
+			sugar: 2,
+			servingSize: "8 oz"
+		}
+	};
+
+	isEqual(thing1, thing2);
+	// => true
+	```
+
+
+	Write a function called `isEqual` that in two objects. `isEqual` compares the objects based on the keys and values inside. It returns `true` if the objects have all the same-valued keys and valued, and it returns `false` if not.
+
+	> Note: Solution not provided in this repo. Deep equality is hard in JavaScript (why?). Feel free to check out lodash's [source code for `baseIsEqual`](https://github.com/lodash/lodash/blob/4.16.4/lodash.js#L3266).
